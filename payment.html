@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pago - Construmec Santo Tomé</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body class="payment-page">
+  <header class="header">
+    <nav class="nav">
+      <div class="logo-container">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <img src="Imagen%20de%20WhatsApp%202025-01-28%20a%20las%2012.14.40_1ddaf352.jpg" alt="Logo" class="logo-image">
+          <a href="index.html" class="logo">CONSTRUMEC<span>SANTO TOMÉ</span></a>
+        </div>
+        <div class="company-info">
+          <p>Calle Candiotti 2315, Santo Tomé, Santa Fe</p>
+          <p>Tel: 3794866210</p>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="back-button">Volver al Inicio</a></li>
+        <li><a href="index.html#catalogo">Catálogo</a></li>
+        <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="payment-container">
+    <section class="payment-section">
+      <div class="section-header">
+        <h2>Resumen de la Reserva</h2>
+      </div>
+      
+      <div class="reservation-summary">
+        <!-- El resumen se cargará dinámicamente -->
+      </div>
+
+      <div class="payment-options">
+        <h3>Selecciona el método de pago</h3>
+        
+        <div class="payment-methods">
+          <button class="payment-method-btn mercadopago">
+            <img src="https://http2.mlstatic.com/frontend-assets/mp-web-navigation/assets/MP-logo.png" alt="Mercado Pago">
+            Pagar con Mercado Pago
+          </button>
+          
+          <button class="payment-method-btn cash">
+            <i class="fas fa-money-bill-wave"></i>
+            Pagar en efectivo al retirar
+          </button>
+        </div>
+
+        <div id="wallet_container"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="payment.js"></script>
+</body>
+</html>

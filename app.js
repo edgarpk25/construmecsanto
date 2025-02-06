@@ -56,7 +56,10 @@ function renderCatalog() {
         <h3 class="machine-title">${machine.name}</h3>
         <p class="machine-description">${machine.description}</p>
         <p class="machine-price">$${machine.price} / día</p>
-        <button class="reserve-button" onclick="showDatePicker(${machine.id})">Reservar</button>
+        <div class="button-group">
+          <button class="reserve-button" onclick="showDatePicker(${machine.id})">Reservar</button>
+          <a href="specs.html#machine-${machine.id}" class="specs-button">Ver Especificaciones</a>
+        </div>
       </div>
     `;
     container.appendChild(card);
@@ -67,8 +70,22 @@ function renderCatalog() {
 let picker = null;
 
 function showDatePicker(machineId) {
+  const machine = machines.find(m => m.id === machineId);
+  if (!machine) return;
+
   const datePickerContainer = document.querySelector('.date-picker-container');
   datePickerContainer.classList.add('active');
+  
+  const totalPriceDisplay = document.createElement('div');
+  totalPriceDisplay.id = 'reservation-total';
+  totalPriceDisplay.className = 'reservation-total';
+  datePickerContainer.appendChild(totalPriceDisplay);
+
+  const continueButton = document.createElement('button');
+  continueButton.className = 'reserve-button';
+  continueButton.style.display = 'none';
+  continueButton.textContent = 'Continuar con la Reserva';
+  datePickerContainer.appendChild(continueButton);
   
   if (!picker) {
     picker = new Litepicker({
@@ -87,7 +104,36 @@ function showDatePicker(machineId) {
       setup: (picker) => {
         picker.on('selected', (date1, date2) => {
           if (date1 && date2) {
-            showReservationForm(machineId, date1, date2);
+            const days = Math.ceil((date2.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+            const totalPrice = days * machine.price;
+            
+            totalPriceDisplay.innerHTML = `
+              <p>Período de alquiler: ${days} días</p>
+              <p>Precio total: $${totalPrice}</p>
+            `;
+            
+            continueButton.style.display = 'block';
+            continueButton.onclick = () => {
+              // Format dates using the Date object's methods
+              const formatDate = (date) => {
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                return `${day}/${month}/${year}`;
+              };
+              
+              const formattedStartDate = formatDate(date1);
+              const formattedEndDate = formatDate(date2);
+              
+              const params = new URLSearchParams({
+                equipment: machine.name,
+                startDate: formattedStartDate,
+                endDate: formattedEndDate,
+                totalPrice: totalPrice,
+                days: days
+              });
+              window.location.href = `reserve.html?${params}`;
+            };
           }
         });
       }
@@ -97,62 +143,6 @@ function showDatePicker(machineId) {
   document.querySelector('.date-picker-container').scrollIntoView({ 
     behavior: 'smooth' 
   });
-}
-
-function showReservationForm(machineId, startDate, endDate) {
-  const reservationForm = document.getElementById('reservation-form');
-  reservationForm.style.display = 'block';
-  const machine = machines.find(m => m.id === machineId);
-  
-  // Calculate number of days
-  const timeDiff = endDate.getTime() - startDate.getTime();
-  const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-  const totalPrice = machine.price * days;
-
-  // Format dates for display
-  const formatDate = (date) => {
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
-
-  const formHtml = `
-    <div class="reservation-form-container">
-      <h2>Reservar ${machine.name}</h2>
-      <div class="form-group">
-        <label for="dni">DNI:</label>
-        <input type="text" id="dni" name="dni" required>
-      </div>
-      <div class="form-group">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="startDate">Fecha de inicio:</label>
-        <input type="text" id="startDate" name="startDate" value="${formatDate(startDate)}" readonly>
-      </div>
-      <div class="form-group">
-        <label for="endDate">Fecha de fin:</label>
-        <input type="text" id="endDate" name="endDate" value="${formatDate(endDate)}" readonly>
-      </div>
-      <div class="form-group">
-        <label for="days">Días de alquiler:</label>
-        <input type="text" id="days" name="days" value="${days}" readonly>
-      </div>
-      <div class="form-group">
-        <label for="totalPrice">Precio total:</label>
-        <input type="text" id="totalPrice" name="totalPrice" value="$${totalPrice}" readonly>
-      </div>
-      <button type="submit" class="reserve-button">Reservar</button>
-      <input type="hidden" id="machineId" name="machineId" value="${machineId}">
-    </div>
-  `;
-  reservationForm.innerHTML = formHtml;
 }
 
 function showConfirmationModal() {

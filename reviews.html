@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reseñas - Construmec Santo Tomé</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="reviews-page">
+  <header class="header">
+    <nav class="nav">
+      <div class="logo-container">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <img src="Imagen%20de%20WhatsApp%202025-01-28%20a%20las%2012.14.40_1ddaf352.jpg" alt="Logo" class="logo-image">
+          <a href="index.html" class="logo">CONSTRUMEC<span>SANTO TOMÉ</span></a>
+        </div>
+        <div class="company-info">
+          <p>Calle Candiotti 2315, Santo Tomé, Santa Fe</p>
+          <p>Tel: 3794866210</p>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="back-button">Volver al Inicio</a></li>
+        <li><a href="index.html#catalogo">Catálogo</a></li>
+        <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="reviews-container">
+    <section class="reviews-section">
+      <div class="section-header">
+        <h2>Opiniones de Nuestros Clientes</h2>
+      </div>
+
+      <div class="review-stats">
+        <div class="average-rating">
+          <h3>Calificación Promedio</h3>
+          <div class="stars-display" id="average-stars"></div>
+          <p><span id="average-rating">4.8</span> de 5</p>
+          <p><span id="total-reviews">0</span> reseñas</p>
+        </div>
+      </div>
+
+      <div class="add-review-section">
+        <h3>Comparte tu Experiencia</h3>
+        <form id="review-form" class="review-form">
+          <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Calificación:</label>
+            <div class="star-rating">
+              <i class="fas fa-star" data-rating="1"></i>
+              <i class="fas fa-star" data-rating="2"></i>
+              <i class="fas fa-star" data-rating="3"></i>
+              <i class="fas fa-star" data-rating="4"></i>
+              <i class="fas fa-star" data-rating="5"></i>
+            </div>
+            <input type="hidden" id="rating" name="rating" required>
+          </div>
+
+          <div class="form-group">
+            <label for="comment">Tu Reseña:</label>
+            <textarea id="comment" name="comment" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="equipment">Equipo Utilizado:</label>
+            <select id="equipment" name="equipment" required>
+              <option value="">Selecciona un equipo</option>
+              <option value="Generador Lusqtoff LG7500EX">Generador Lusqtoff LG7500EX</option>
+              <option value="Rotomartillo Demoledor DeWalt">Rotomartillo Demoledor DeWalt</option>
+              <option value="Motobomba Lusqtoff 3\"">Motobomba Lusqtoff 3"</option>
+              <option value="Vibroapisonador">Vibroapisonador</option>
+              <option value="Desmalezadora Profesional">Desmalezadora Profesional</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-button">Publicar Reseña</button>
+        </form>
+      </div>
+
+      <div class="reviews-list" id="reviews-container">
+        <!-- Reviews will be loaded here -->
+      </div>
+    </section>
+  </main>
+
+  <script src="reviews.js"></script>
+</body>
+</html>
