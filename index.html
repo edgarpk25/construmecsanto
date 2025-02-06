@@ -1,0 +1,117 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Construmec Santo Tomé - Alquiler de Maquinaria</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <div class="logo-container">
+        <img src="Imagen%20de%20WhatsApp%202025-01-28%20a%20las%2012.14.40_1ddaf352.jpg" alt="Logo" class="logo-image">
+        <a href="#" class="logo">CONSTRUMEC<span>SANTO TOMÉ</span></a>
+      </div>
+      <div class="company-info">
+        <p>Calle Candiotti 2315, Santo Tomé, Santa Fe</p>
+        <p>Tel: 3794866210</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h1>Tu socio en equipamiento y maquinaria</h1>
+      <p>Alquiler de equipos profesionales para construcción y obras</p>
+      <a href="#catalogo" class="cta-button">Ver equipos disponibles</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="como-funciona" class="how-it-works">
+      <div class="section-header">
+        <h2>Cómo Funciona</h2>
+      </div>
+      <div class="how-it-works-content">
+        <div class="steps">
+          <div class="step">
+            <h3>1. Explora</h3>
+            <p>Navega por nuestro catálogo y encuentra el equipo que necesitas</p>
+          </div>
+          <div class="step">
+            <h3>2. Reserva</h3>
+            <p>Selecciona las fechas y completa el formulario de reserva</p>
+          </div>
+          <div class="step">
+            <h3>3. Confirma</h3>
+            <p>Realiza el pago y recibe la confirmación de tu reserva</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section catalog-section">
+      <div class="section-header">
+        <h2>Nuestros Equipos</h2>
+      </div>
+      <div class="catalog-grid" id="catalog-container"></div>
+    </section>
+
+    <div class="date-picker-container">
+      <div class="section-header">
+        <h2>Selecciona las fechas de alquiler</h2>
+      </div>
+      <input type="text" id="date-range" placeholder="Seleccionar fechas">
+    </div>
+
+    <section id="reservation-form" style="display: none;">
+      <div class="section-header">
+        <h2>Completar Reserva</h2>
+      </div>
+      <form class="reservation-form">
+        <input type="text" name="dni" placeholder="DNI" required>
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Teléfono" required>
+        <button type="submit" class="reserve-button">Confirmar Reserva</button>
+      </form>
+    </section>
+
+    <section id="contacto" class="contact-section">
+      <div class="section-header">
+        <h2>Contacto</h2>
+      </div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <svg class="whatsapp-icon" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
+          </svg>
+          <a href="https://wa.me/5493764528743" target="_blank">+54 9 3764 528743</a>
+        </div>
+        <div class="contact-item">
+          <span>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aecdc1c0dddadcdbc3cbcdddcfc0dac1dac1c3cbeec9c3cfc7c280cdc1c3">[email&#160;protected]</a></span>
+        </div>
+        <div class="contact-item">
+          <span>Tel: 3794866210</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="confirmation-modal">
+    <div class="confirmation-content">
+      <h2>¡Gracias por tu reserva!</h2>
+      <p>En breve nos pondremos en contacto contigo para confirmar los detalles.</p>
+      <button class="close-button" onclick="this.closest('.confirmation-modal').style.display='none'">Cerrar</button>
+    </div>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
